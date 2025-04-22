@@ -1,0 +1,6 @@
+id: 2bo26386a3po4vx3u17aqlsln5h66wlc9jo79ucbal9opxsr
+name: sys-libc
+main: mod.zig
+license: MIT
+description: OS bindings layer for calling libc
+dependencies:
