@@ -4,3 +4,5 @@ main: mod.zig
 license: MIT
 description: OS bindings layer for calling libc
 dependencies:
+  - src: git https://github.com/nektro/zig-libc
+  - src: git https://github.com/nektro/zig-errno
