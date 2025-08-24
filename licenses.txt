@@ -3,3 +3,6 @@ MIT:
 - This
 - git https://github.com/nektro/zig-errno
 - git https://github.com/nektro/zig-libc
+
+Unspecified:
+- system_lib c
