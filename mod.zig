@@ -36,3 +36,11 @@ pub fn read(fd: c_int, buf: []u8) errno.Error!usize {
     std.debug.assert(rc >= 0);
     return @intCast(rc);
 }
+
+pub fn fstat(fd: c_int) errno.Error!libc.struct_stat {
+    var buf: libc.struct_stat = undefined;
+    const rc = libc.fstat(fd, &buf);
+    if (rc == -1) return errno.errorFromInt(errno.get_from_libc());
+    std.debug.assert(rc == 0);
+    return buf;
+}
