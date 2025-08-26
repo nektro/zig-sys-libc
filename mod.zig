@@ -80,3 +80,12 @@ pub fn fstat(fd: c_int) errno.Error!libc.struct_stat {
     std.debug.assert(rc == 0);
     return buf;
 }
+
+pub fn readv(fd: c_int, bufs: []const libc.struct_iovec) errno.Error!usize {
+    std.debug.assert(bufs.len > 0);
+    std.debug.assert(bufs.len <= libc.IOV_MAX);
+    const rc = libc.readv(fd, bufs.ptr, @intCast(bufs.len));
+    if (rc == -1) return errno.errorFromInt(errno.get_from_libc());
+    std.debug.assert(rc >= 0);
+    return @intCast(rc);
+}
