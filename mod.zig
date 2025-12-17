@@ -89,3 +89,9 @@ pub fn readv(fd: c_int, bufs: []const libc.struct_iovec) errno.Error!usize {
     std.debug.assert(rc >= 0);
     return @intCast(rc);
 }
+
+pub fn mkdirat(fd: c_int, path: [*:0]const u8, mode: mode_t) errno.Error!void {
+    const rc = libc.mkdirat(fd, path, mode);
+    if (rc == -1) return errno.errorFromInt(errno.get_from_libc());
+    std.debug.assert(rc == 0);
+}
