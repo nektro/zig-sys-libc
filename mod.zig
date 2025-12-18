@@ -95,3 +95,7 @@ pub fn mkdirat(fd: c_int, path: [*:0]const u8, mode: mode_t) errno.Error!void {
     if (rc == -1) return errno.errorFromInt(errno.get_from_libc());
     std.debug.assert(rc == 0);
 }
+
+pub fn pthread_self() pthread_t {
+    return libc.pthread_self();
+}
